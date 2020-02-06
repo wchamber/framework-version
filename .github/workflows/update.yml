@@ -11,7 +11,8 @@ jobs:
       uses: actions/checkout@v2
     - name: Update service version map
       run: |
-        jq '.["${{ github.event.client_payload.service }}"] = "${{ github.event.client_payload.tag }}"' version.json > version.json
+        jq '.["${{ github.event.client_payload.service }}"] = "${{ github.event.client_payload.tag }}"' version.json > tmp.json
+        mv tmp.json version.json
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
