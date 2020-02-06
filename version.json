@@ -1,1 +1,4 @@
-{"kernel-service-poc": "0.1.0"}
+{
+  "kernel-service-poc": "0.1.0",
+  "workspace-test": "0.2.0"
+}
