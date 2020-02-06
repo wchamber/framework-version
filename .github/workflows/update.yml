@@ -1,0 +1,20 @@
+name: Update Version
+
+on:
+  repository_dispatch:
+    types: [version-bump]
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout current code
+      uses: actions/checkout@v2
+    - name: Update service version map
+      run: |
+        jq '.["${{ github.event.client_payload.service }}"] = "${{ github.event.client_payload.tag }}"' version.json > version.json
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Bump ${{ github.event.client_payload.service }} to ${{ github.event.client_payload.tag }}" -a
+        git push "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${REPOSITORY}.git" HEAD:master
