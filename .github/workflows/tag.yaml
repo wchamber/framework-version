@@ -4,6 +4,8 @@ on:
   push:
     branches:
     - master
+    paths:
+    - 'version.json'
 jobs:
   tag-dispatch:
     runs-on: ubuntu-latest
