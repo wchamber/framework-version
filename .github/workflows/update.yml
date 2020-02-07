@@ -19,16 +19,3 @@ jobs:
         git config --local user.name "GitHub Action"
         git commit -m "Bump ${{ github.event.client_payload.service }} to ${{ github.event.client_payload.version }}" -a
         git push "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
-    - name: Bump and push version tag
-      id: tag
-      uses: broadinstitute/github-tag-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        WITH_V: false
-    - name: Notify environment repo of update
-      uses: broadinstitute/repository-dispatch@master
-      with:
-        token: ${{ secrets.REPO_ACCESS_TOKEN }}
-        repository: databiosphere/framework-env
-        event-type: update-env
-        client-payload: '{"env": "dev", "version": "${{ steps.tag.outputs.tag }}"}'
