@@ -1,4 +1,4 @@
-name: Update Service Version Mapping
+name: Update Framework Version Tag
 
 on:
   push:
