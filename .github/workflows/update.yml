@@ -15,7 +15,13 @@ jobs:
         mv tmp.json version.json
     - name: Commit files
       run: |
-        git config --local user.email "automation@broadinstitute.org"
-        git config --local user.name "Automation"
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         git commit -m "Bump ${{ github.event.client_payload.service }} to ${{ github.event.client_payload.version }}" -a
-        git push "https://${{ secrets.REPO_ACCESS_USER }}:${{ secrets.REPO_ACCESS_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
+        git push "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
+    - name: Bump and push version tag
+      id: tag
+      uses: broadinstitute/github-tag-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        WITH_V: false
