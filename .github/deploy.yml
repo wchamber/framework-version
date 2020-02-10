@@ -1,3 +1,6 @@
 dev:
+  environment: dev
 gmalkov:
+  environment: dev
 zloery:
+  environment: dev
