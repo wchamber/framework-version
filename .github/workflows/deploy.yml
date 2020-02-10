@@ -8,10 +8,15 @@ jobs:
     - name: Get the version tag
       id: get_version
       run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+    - name: Report
+      run: |
+        echo "version - ${{ steps.get_version.outputs.VERSION }}"
+        echo "environment - ${{ github.event.deployment.task }}"
+        echo "payload - ${{ github.event.deployment.payload }}"
     - name: Notify environment repo of update
       uses: broadinstitute/repository-dispatch@master
       with:
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
         repository: databiosphere/framework-env
         event-type: update-env
-        client-payload: '{"env": "${{ target }}", "version": "${{ steps.get_version.outputs.VERSION }}"}'
+        client-payload: '{"env": "${{ github.event.deployment.task }}", "version": "${{ steps.get_version.outputs.VERSION }}"}'
