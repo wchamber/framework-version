@@ -7,9 +7,9 @@ jobs:
     id: get_version
     run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
   - name: Notify environment repo of update
-      uses: broadinstitute/repository-dispatch@master
-      with:
-        token: ${{ secrets.REPO_ACCESS_TOKEN }}
-        repository: databiosphere/framework-env
-        event-type: update-env
-        client-payload: '{"env": "${{ target }}", "version": "${{ steps.get_version.outputs.VERSION }}"}'
+    uses: broadinstitute/repository-dispatch@master
+    with:
+      token: ${{ secrets.REPO_ACCESS_TOKEN }}
+      repository: databiosphere/framework-env
+      event-type: update-env
+      client-payload: '{"env": "${{ target }}", "version": "${{ steps.get_version.outputs.VERSION }}"}'
