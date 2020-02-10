@@ -10,6 +10,7 @@ jobs:
     - name: Get the version tag
       id: get_version
       run: |
+        git fetch --tags
         version=$(git tag -l --points-at HEAD)
         echo ::set-output name=VERSION::$version
     - name: Report
