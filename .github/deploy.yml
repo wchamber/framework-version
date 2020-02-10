@@ -1,6 +1,6 @@
 dev:
-  required_contexts: ["update-version"]
+  required_contexts: ["update"]
 gmalkov:
-  required_contexts: ["update-version"]
+  required_contexts: ["update"]
 zloery:
-  required_contexts: ["update-version"]
+  required_contexts: ["update"]
