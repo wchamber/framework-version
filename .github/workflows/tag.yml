@@ -1,0 +1,20 @@
+name: Tag Stack Change
+
+on:
+  push:
+    branches:
+    - master
+    paths:
+    - '**.json'
+jobs:
+  apply-changes:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout current code
+      uses: actions/checkout@v2
+    - name: Bump and push version tag
+      id: tag
+      uses: broadinstitute/github-tag-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        WITH_V: false
