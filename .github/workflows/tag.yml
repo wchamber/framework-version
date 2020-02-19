@@ -7,7 +7,7 @@ on:
     paths:
     - '**.json'
 jobs:
-  apply-changes:
+  tag:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout current code
