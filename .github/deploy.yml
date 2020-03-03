@@ -4,3 +4,5 @@ gmalkov:
   environment: gmalkov
 zloery:
   environment: zloery
+foo:
+  environment: foo
