@@ -6,3 +6,5 @@ zloery:
   environment: zloery
 foo:
   environment: foo
+bar:
+  environment: bar
