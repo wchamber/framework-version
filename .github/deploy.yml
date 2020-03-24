@@ -4,7 +4,7 @@ gmalkov:
   environment: gmalkov
 zloery:
   environment: zloery
-foo:
-  environment: foo
-bar:
-  environment: bar
+yyu:
+  environment: yyu
+wchamber:
+  environment: wchamber
