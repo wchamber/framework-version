@@ -1,5 +1,5 @@
-dev:
-  environment: dev
+test1:
+  environment: test1
 gmalkov:
   environment: gmalkov
 zloery:
