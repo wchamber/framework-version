@@ -1,5 +1,7 @@
 {
   "kernel-service-poc": "0.12.0",
   "env-base": "0.6.0",
-  "identity-concentrator": "0.1.0"
+  "identity-concentrator": "0.1.0",
+  // TODO figure out how we want to version and bump Sam. For now, this is manual.
+  "sam" : "b07357cf4e",
 }
